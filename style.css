@@ -23,4 +23,15 @@ body {
         border-bottom: 0.4em solid oklch(80% 3% 200);
         padding-bottom: 0.1em;
     }
+
+    html {
+        --color-accent: oklch(65% 0.22 25);
+        accent-color: var(--color-accent);
+    }
+
+    nav a:hover {
+        border-bottom: 0.4em solid var(--color-accent);
+        padding-bottom: 0.1em;
+        background-color: oklch(from var(--color-accent) 95% 0.05 h);
+    }
   }
