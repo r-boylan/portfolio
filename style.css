@@ -90,20 +90,32 @@ form {
     max-width: 100%;
 }
 
-body:has(h1) section {
-    margin-bottom: 2em;
+.resume {
+    display: grid;
+    gap: 1.5em;
 }
 
-body > section > h4,
-body > h4 {
-    font-size: 1.4em;
-    line-height: 1.4;
+.job {
+    padding: 1.25em 1.5em;
     border-left: 4px solid var(--color-accent);
-    padding: 0.5em 0 0.5em 1em;
-    background-color: oklch(from var(--color-accent) 97% 0.02 h);
+    border-radius: 0.5em;
+    background-color: oklch(97% 0.02 25);
 }
 
-body > section > p,
-body > p {
-    line-height: 1.6;
+.job h4 {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    font-size: 1.2em;
+    line-height: 1.5;
 }
+
+.job p {
+    line-height: 1.6;
+    margin-bottom: 0.75em;
+}
+
+.job p:last-child {
+    margin-bottom: 0;
+}
+
+
