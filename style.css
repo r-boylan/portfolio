@@ -5,4 +5,11 @@ body {
     font: 100%/1.5 system-ui;
     max-width: 800px;
     margin-inline: max(1em, (100% - 100ch) / 2);
+    nav {
+        display: flex;
+        }
+    
+        nav a {
+        flex: 1;
+        }
   }
