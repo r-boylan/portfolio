@@ -5,12 +5,14 @@ body {
     font: 100%/1.5 system-ui;
     max-width: 800px;
     margin-inline: max(1em, (100% - 100ch) / 2);
-    nav {
-        display: flex;
-        margin-bottom: 1em;
-        border-bottom: 1px solid oklch(80% 3% 200);
-    }
 }
+    
+nav {
+    display: flex;
+    margin-bottom: 1em;
+    border-bottom: 1px solid oklch(80% 3% 200);
+}
+
 nav a {
     flex: 1;
     text-decoration: none;
