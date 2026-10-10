@@ -38,18 +38,25 @@ nav a:hover {
 }
 
 
-form label,
-form input,
-form textarea {
-    display: block;
-}
-
-form input,
-form textarea {
+form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+    }
+    
+    form label {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    }
+    
+    form input,
+    form textarea {
     width: 100%;
     box-sizing: border-box;
-}
-
-form label {
-    margin-block: 1em;
-}
+    }
+    
+    form button {
+    grid-column: 1 / -1;
+    }
+    
