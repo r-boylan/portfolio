@@ -6,6 +6,15 @@ body {
     max-width: 800px;
     margin-inline: max(1em, (100% - 100ch) / 2);
 }
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: 400%;
+}
     
 nav {
     display: flex;
