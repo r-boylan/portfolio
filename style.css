@@ -101,7 +101,7 @@ form {
     padding: 1.25em 1.5em;
     border-left: 4px solid var(--color-accent);
     border-radius: 0.5em;
-    background-color: oklch(97% 0.02 25);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 90%);
 }
 
 .job h4 {
