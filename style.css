@@ -135,3 +135,12 @@ form {
     grid-row: 2;
     margin: 0;
 }
+
+label.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+    font-family: inherit;
+}
+
