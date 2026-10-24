@@ -58,11 +58,23 @@ document.body.insertAdjacentHTML(
   `,
 );
 
+
 const select = document.querySelector('.color-scheme select');
 
-select.addEventListener('input', function (event) {
+function setColorScheme(colorScheme) {
   document.documentElement.style.setProperty(
     'color-scheme',
-    event.target.value
+    colorScheme
   );
+  select.value = colorScheme;
+}
+
+if ('colorScheme' in localStorage) {
+  setColorScheme(localStorage.colorScheme);
+}
+
+select.addEventListener('input', function (event) {
+  localStorage.colorScheme = event.target.value;
+  setColorScheme(event.target.value);
 });
+
