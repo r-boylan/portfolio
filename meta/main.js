@@ -6,4 +6,17 @@ async function loadData() {
   return data;
 }
 
-let data = await loadData();
+async function loadData() {
+    const data = await d3.csv('loc.csv', (row) => ({
+      ...row,
+      line: Number(row.line),
+      depth: Number(row.depth),
+      length: Number(row.length),
+      date: new Date(row.date + 'T00:00' + row.timezone),
+      datetime: new Date(row.datetime),
+    }));
+  
+    return data;
+  }
+  
+  let data = await loadData();
