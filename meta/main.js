@@ -15,4 +15,6 @@ async function loadData() {
 
 let data = await loadData();
 
-console.log(data);
+let commits = d3.groups(data, (d) => d.commit);
+
+console.log(commits);
