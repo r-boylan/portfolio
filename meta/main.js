@@ -56,7 +56,11 @@ function renderCommitInfo(data, commits) {
   }
 
 
-let data = await loadData();
-let commits = processCommits(data);
+  let data = await loadData();
+  let commits = processCommits(data);
   
-renderCommitInfo(data, commits);
+  console.log('Stats element:', document.querySelector('#stats'));
+  
+  renderCommitInfo(data, commits);
+  
+  console.log('Stats HTML:', document.querySelector('#stats').innerHTML);
