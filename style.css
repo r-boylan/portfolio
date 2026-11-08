@@ -277,3 +277,7 @@ dl.info[hidden] {
     stroke-dasharray: 5 3;
     animation: marching-ants 2s linear infinite;
   }
+
+circle.selected {
+    fill: #ff6b6b;
+}
