@@ -259,3 +259,7 @@ dl.info dd {
     border-radius: 8px;
     padding: 1em;
 }
+
+dl.info[hidden] {
+    display: none;
+}
