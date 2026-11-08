@@ -167,6 +167,9 @@ function renderScatterPlot(data, commits) {
       (d) => d.totalLines,
     );
 
+    console.log('Minimum lines:', minLines);
+    console.log('Maximum lines:', maxLines);
+
     // Create the radius scale
     const rScale = d3
       .scaleLinear()
