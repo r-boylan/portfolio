@@ -113,6 +113,11 @@ function renderTooltipContent(commit) {
     lines.textContent = commit.totalLines;
 }
 
+function updateTooltipVisibility(isVisible) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.hidden = !isVisible;
+}
+
 function renderScatterPlot(data, commits) {
     // Define dimensions
     const width = 1000;
