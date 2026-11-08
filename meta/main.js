@@ -161,6 +161,18 @@ function renderScatterPlot(data, commits) {
       .scaleLinear()
       .domain([0, 24])
       .range([usableArea.bottom, usableArea.top]);
+    // Calculate the range of lines edited
+    const [minLines, maxLines] = d3.extent(
+      commits,
+      (d) => d.totalLines,
+    );
+
+    // Create the radius scale
+    const rScale = d3
+      .scaleLinear()
+      .domain([minLines, maxLines])
+      .range([2, 30]);
+
     // Create the dots
     const dots = svg.append('g').attr('class', 'dots');
 
@@ -170,7 +182,7 @@ function renderScatterPlot(data, commits) {
         .join('circle')
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))
-        .attr('r', 5)
+        .attr('r', (d) => rScale(d.totalLines))
         .attr('fill', 'steelblue')
         .on('mouseenter', (event, commit) => {
             renderTooltipContent(commit);
