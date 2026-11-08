@@ -1,5 +1,8 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
+let xScale;
+let yScale;
+
 async function loadData() {
   const data = await d3.csv('loc.csv', (row) => ({
     ...row,
@@ -160,14 +163,14 @@ function renderScatterPlot(data, commits) {
       };
 
     // Create the X scale for dates
-    const xScale = d3
+    xScale = d3
       .scaleTime()
       .domain(d3.extent(commits, (d) => d.datetime))
       .range([usableArea.left, usableArea.right])
       .nice();
 
     // Create the Y scale for time of day
-    const yScale = d3
+    yScale = d3
       .scaleLinear()
       .domain([0, 24])
       .range([usableArea.bottom, usableArea.top]);
