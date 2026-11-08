@@ -214,13 +214,22 @@ label.color-scheme {
     gap: 1em;
     margin-block: 2em;
     max-width: 500px;
-  }
+}
   
-  .stats dt {
+.stats dt {
     font-weight: bold;
-  }
+}
   
-  .stats dd {
+.stats dd {
     margin: 0;
     font-size: 2em;
-  }
+}
+
+.gridlines line {
+  stroke: gray;
+  stroke-opacity: 0.2;
+}
+
+.gridlines path {
+  display: none;
+}
