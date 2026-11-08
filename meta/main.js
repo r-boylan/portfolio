@@ -125,7 +125,11 @@ function updateTooltipPosition(event) {
 }
 
 function createBrushSelector(svg) {
+    // Create brush
     svg.call(d3.brush());
+
+    // Raise dots and everything after the overlay
+    svg.selectAll('.dots, .overlay ~ *').raise();
 }
 
 function renderScatterPlot(data, commits) {
