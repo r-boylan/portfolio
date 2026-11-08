@@ -207,3 +207,20 @@ label.color-scheme {
 #projects-plot path {
     cursor: pointer;
 }
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin-block: 2em;
+    max-width: 500px;
+  }
+  
+  .stats dt {
+    font-weight: bold;
+  }
+  
+  .stats dd {
+    margin: 0;
+    font-size: 2em;
+  }

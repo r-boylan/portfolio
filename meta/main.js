@@ -45,15 +45,35 @@ function processCommits(data) {
 function renderCommitInfo(data, commits) {
     // Create the dl element
     const dl = d3.select('#stats').append('dl').attr('class', 'stats');
-  
+
     // Add total LOC
     dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
     dl.append('dd').text(data.length);
-  
+
     // Add total commits
     dl.append('dt').text('Total commits');
     dl.append('dd').text(commits.length);
-  }
+
+    // Add number of files
+    const fileCount = d3.group(data, (d) => d.file).size;
+    dl.append('dt').text('Number of files');
+    dl.append('dd').text(fileCount);
+
+    // Add average line length
+    const averageLength = d3.mean(data, (d) => d.length);
+    dl.append('dt').text('Average line length');
+    dl.append('dd').text(averageLength.toFixed(2));
+
+    // Add longest line length
+    const longestLine = d3.max(data, (d) => d.length);
+    dl.append('dt').text('Longest line length');
+    dl.append('dd').text(longestLine);
+
+    // Add maximum depth
+    const maxDepth = d3.max(data, (d) => d.depth);
+    dl.append('dt').text('Maximum depth');
+    dl.append('dd').text(maxDepth);
+}
 
 
   let data = await loadData();
