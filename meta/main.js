@@ -149,9 +149,11 @@ function renderScatterPlot(data, commits) {
 
     // Add X axis
     svg
-      .append('g')
-      .attr('transform', `translate(0, ${usableArea.bottom})`)
-      .call(xAxis);
+        .append('g')
+        .attr('transform', `translate(0, ${usableArea.bottom})`)
+        .call(xAxis)
+        .selectAll('text')
+        .attr('font-size', 12);
 
     // Add Y axis
     svg
