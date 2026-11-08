@@ -135,6 +135,27 @@ function createBrushSelector(svg) {
     svg.selectAll('.dots, .overlay ~ *').raise();
 }
 
+function brushed(event) {
+    const selection = event.selection;
+
+    d3.selectAll('circle').classed('selected', (d) =>
+        isCommitSelected(selection, d),
+    );
+}
+
+function isCommitSelected(selection, commit) {
+    if (!selection) {
+        return false;
+    }
+
+    const [[x0, y0], [x1, y1]] = selection;
+
+    const x = xScale(commit.datetime);
+    const y = yScale(commit.hourFrac);
+
+    return x >= x0 && x <= x1 && y >= y0 && y <= y1;
+}
+
 function renderScatterPlot(data, commits) {
     // Define dimensions
     const width = 1000;
