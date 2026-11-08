@@ -253,4 +253,9 @@ dl.info dd {
     position: fixed;
     top: 1em;
     left: 1em;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 1em;
 }
