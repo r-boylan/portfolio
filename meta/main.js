@@ -73,10 +73,24 @@ function renderCommitInfo(data, commits) {
     const maxDepth = d3.max(data, (d) => d.depth);
     dl.append('dt').text('Maximum depth');
     dl.append('dd').text(maxDepth);
+
+    // Add average file length
+    const fileLengths = d3.rollups(
+      data,
+      (v) => d3.max(v, (v) => v.line),
+      (d) => d.file,
+    );
+
+    const averageFileLength = d3.mean(
+      fileLengths,
+      (d) => d[1],
+    );
+
+    dl.append('dt').text('Average file length');
+    dl.append('dd').text(averageFileLength.toFixed(2));
 }
 
+let data = await loadData();
+let commits = processCommits(data);
 
-  let data = await loadData();
-  let commits = processCommits(data);
-    
-  renderCommitInfo(data, commits);
+renderCommitInfo(data, commits);
