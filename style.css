@@ -233,3 +233,24 @@ label.color-scheme {
 .gridlines path {
   display: none;
 }
+
+dl.info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5em 1em;
+  }
+  
+dl.info dt {
+    color: gray;
+    font-weight: normal;
+}
+  
+dl.info dd {
+    margin: 0;
+}
+  
+.tooltip {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+}
