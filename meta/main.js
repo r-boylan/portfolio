@@ -172,7 +172,7 @@ function renderScatterPlot(data, commits) {
 
     // Create the radius scale
     const rScale = d3
-      .scaleLinear()
+      .scaleSqrt()
       .domain([minLines, maxLines])
       .range([2, 30]);
 
