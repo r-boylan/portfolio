@@ -143,6 +143,7 @@ function brushed(event) {
     );
 
     renderSelectionCount(selection);
+    renderLanguageBreakdown(selection);
 }
 
 function isCommitSelected(selection, commit) {
