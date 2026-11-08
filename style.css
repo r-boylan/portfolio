@@ -263,3 +263,17 @@ dl.info dd {
 dl.info[hidden] {
     display: none;
 }
+
+@keyframes marching-ants {
+    to {
+      stroke-dashoffset: -8;
+    }
+  }
+  
+  .selection {
+    fill-opacity: 0.1;
+    stroke: black;
+    stroke-opacity: 0.7;
+    stroke-dasharray: 5 3;
+    animation: marching-ants 2s linear infinite;
+  }
