@@ -95,6 +95,9 @@ function renderScatterPlot(data, commits) {
     const width = 1000;
     const height = 600;
 
+    // Define margins
+    const margin = { top: 10, right: 10, bottom: 30, left: 20 };
+
     // Create the SVG
     const svg = d3
       .select('#chart')
@@ -102,18 +105,29 @@ function renderScatterPlot(data, commits) {
       .attr('viewBox', `0 0 ${width} ${height}`)
       .style('overflow', 'visible');
 
+    // Define the usable area
+    const usableArea = {
+        top: margin.top,
+        right: width - margin.right,
+        bottom: height - margin.bottom,
+        left: margin.left,
+        width: width - margin.left - margin.right,
+        height: height - margin.top - margin.bottom,
+      };
+
+
     // Create the X scale for dates
     const xScale = d3
       .scaleTime()
       .domain(d3.extent(commits, (d) => d.datetime))
-      .range([0, width])
+      .range([usableArea.left, usableArea.right])
       .nice();
 
     // Create the Y scale for time of day
-    const yScale = d3.scaleLinear()
+    const yScale = d3
+      .scaleLinear()
       .domain([0, 24])
-      .range([height, 0]);
-
+      .range([usableArea.bottom, usableArea.top]);
     // Create the dots
     const dots = svg.append('g').attr('class', 'dots');
 
@@ -125,12 +139,29 @@ function renderScatterPlot(data, commits) {
       .attr('cy', (d) => yScale(d.hourFrac))
       .attr('r', 5)
       .attr('fill', 'steelblue');
+
+    // Create the axes
+    const xAxis = d3.axisBottom(xScale);
+
+    const yAxis = d3
+      .axisLeft(yScale)
+      .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
+
+    // Add X axis
+    svg
+      .append('g')
+      .attr('transform', `translate(0, ${usableArea.bottom})`)
+      .call(xAxis);
+
+    // Add Y axis
+    svg
+      .append('g')
+      .attr('transform', `translate(${usableArea.left}, 0)`)
+      .call(yAxis);
 }
 
 let data = await loadData();
 let commits = processCommits(data);
 
 renderCommitInfo(data, commits);
-console.log('Data:', data);
-console.log('Commits:', commits);
 renderScatterPlot(data, commits);
