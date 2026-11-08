@@ -131,4 +131,6 @@ let data = await loadData();
 let commits = processCommits(data);
 
 renderCommitInfo(data, commits);
+console.log('Data:', data);
+console.log('Commits:', commits);
 renderScatterPlot(data, commits);
