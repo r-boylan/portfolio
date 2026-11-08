@@ -124,6 +124,10 @@ function updateTooltipPosition(event) {
     tooltip.style.top = `${event.clientY}px`;
 }
 
+function createBrushSelector(svg) {
+    svg.call(d3.brush());
+}
+
 function renderScatterPlot(data, commits) {
     // Define dimensions
     const width = 1000;
@@ -138,6 +142,8 @@ function renderScatterPlot(data, commits) {
       .append('svg')
       .attr('viewBox', `0 0 ${width} ${height}`)
       .style('overflow', 'visible');
+
+    createBrushSelector(svg);
 
     // Define the usable area
     const usableArea = {
