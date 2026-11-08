@@ -14,23 +14,28 @@ async function loadData() {
 }
 
 function processCommits(data) {
-  return d3
-    .groups(data, (d) => d.commit)
-    .map(([commit, lines]) => {
-      let first = lines[0];
-
-      let { author, date, time, timezone, datetime } = first;
-
-      return {
-        id: commit,
-        author,
-        date,
-        time,
-        timezone,
-        datetime,
-      };
-    });
-}
+    return d3
+      .groups(data, (d) => d.commit)
+      .map(([commit, lines]) => {
+        let first = lines[0];
+  
+        let { author, date, time, timezone, datetime } = first;
+  
+        let ret = {
+          id: commit,
+          url: 'https://github.com/r-boylan/portfolio/commit/' + commit,
+          author,
+          date,
+          time,
+          timezone,
+          datetime,
+          hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
+          totalLines: lines.length,
+        };
+  
+        return ret;
+      });
+  }
 
 let data = await loadData();
 let commits = processCommits(data);
