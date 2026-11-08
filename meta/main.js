@@ -18,9 +18,9 @@ function processCommits(data) {
       .groups(data, (d) => d.commit)
       .map(([commit, lines]) => {
         let first = lines[0];
-  
+
         let { author, date, time, timezone, datetime } = first;
-  
+
         let ret = {
           id: commit,
           url: 'https://github.com/r-boylan/portfolio/commit/' + commit,
@@ -32,10 +32,15 @@ function processCommits(data) {
           hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
           totalLines: lines.length,
         };
-  
+
+        Object.defineProperty(ret, 'lines', {
+          value: lines,
+          enumerable: false,
+        });
+
         return ret;
       });
-  }
+}
 
 let data = await loadData();
 let commits = processCommits(data);
