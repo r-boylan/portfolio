@@ -3,7 +3,7 @@
     {
         "title": "Bikewatching",
         "year": 2026,
-        "image": "images/bikewatching.png",
+        "image": "../images/bikewatching.png",
         "description": "An interactive map visualization showing bike activity across Boston and Cambridge. The map displays station traffic, with circle sizes representing total trips and colors showing the balance between departures and arrivals, and can be filtered via a time slider to explore how bike traffic changes throughout the day.",
         "url": "https://r-boylan.github.io/bikewatching/"
     },
