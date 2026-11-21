@@ -271,7 +271,7 @@ function renderScatterPlot(data, commits) {
 
     dots
         .selectAll('circle')
-        .data(sortedCommits)
+        .data(sortedCommits, (d) => d.id)
         .join('circle')
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))
@@ -349,12 +349,10 @@ function updateScatterPlot(data, commits) {
     const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
   
     const xAxis = d3.axisBottom(xScale);
-  
-    // CHANGE: we should clear out the existing xAxis and then create a new one.
-    svg
-      .append('g')
-      .attr('transform', `translate(0, ${usableArea.bottom})`)
-      .call(xAxis);
+    const xAxisGroup = svg.select('g.x-axis');
+    xAxisGroup.selectAll('*').remove();
+    xAxisGroup.call(xAxis);
+
   
     const dots = svg.select('g.dots');
   
