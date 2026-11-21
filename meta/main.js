@@ -338,9 +338,26 @@ function renderScatterPlot(data, commits) {
       .call(yAxis);
 }
 
+function onTimeSliderChange() {
+    commitProgress = document.querySelector('#commit-progress').value;
+  
+    commitMaxTime = timeScale.invert(commitProgress);
+  
+    document.querySelector('#commit-time').textContent =
+      commitMaxTime.toLocaleString('en', {
+        dateStyle: 'long',
+        timeStyle: 'short',
+      });
+  }
+
 let data = await loadData();
 let commits = processCommits(data);
 
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 
+document
+  .querySelector('#commit-progress')
+  .addEventListener('input', onTimeSliderChange);
+
+onTimeSliderChange();
