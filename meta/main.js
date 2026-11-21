@@ -45,6 +45,18 @@ function processCommits(data) {
       });
 }
 
+let commitProgress = 100;
+
+let timeScale = d3
+  .scaleTime()
+  .domain([
+    d3.min(commits, (d) => d.datetime),
+    d3.max(commits, (d) => d.datetime),
+  ])
+  .range([0, 100]);
+
+let commitMaxTime = timeScale.invert(commitProgress);
+
 function renderCommitInfo(data, commits) {
     // Create the dl element
     const dl = d3.select('#stats').append('dl').attr('class', 'stats');
@@ -331,3 +343,4 @@ let commits = processCommits(data);
 
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
+
