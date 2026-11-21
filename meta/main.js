@@ -412,6 +412,7 @@ let commitMaxTime = timeScale.invert(commitProgress);
 let filteredCommits = commits;
 
 function updateFileDisplay(filteredCommits) {
+    let colors = d3.scaleOrdinal(d3.schemeTableau10);
     let lines = filteredCommits.flatMap((d) => d.lines);
     let files = d3
     .groups(lines, (d) => d.file)
@@ -432,7 +433,8 @@ function updateFileDisplay(filteredCommits) {
             div.select('dt').append('small');
             div.append('dd');
         }),
-    );
+    )
+    .attr('style', (d) => `--color: ${colors(d.lines[0].type)}`);
 
     // This code updates the div info
     filesContainer.select('dt > code').html((d) => d.name);
