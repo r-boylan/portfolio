@@ -352,7 +352,6 @@ function updateScatterPlot(data, commits) {
     const xAxisGroup = svg.select('g.x-axis');
     xAxisGroup.selectAll('*').remove();
     xAxisGroup.call(xAxis);
-
   
     const dots = svg.select('g.dots');
   

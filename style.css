@@ -281,3 +281,11 @@ dl.info[hidden] {
 circle.selected {
     fill: #ff6b6b;
 }
+
+circle {
+    transition: all 200ms;
+
+    @starting-style {
+        r: 0;
+    }
+}
