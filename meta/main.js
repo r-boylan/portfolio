@@ -428,13 +428,21 @@ function updateFileDisplay(filteredCommits) {
         (enter) =>
         enter.append('div').call((div) => {
             div.append('dt').append('code');
+            div.select('dt').append('small');
             div.append('dd');
         }),
     );
 
     // This code updates the div info
-    filesContainer.select('dt > code').text((d) => d.name);
-    filesContainer.select('dd').text((d) => `${d.lines.length} lines`);
+    filesContainer.select('dt > code').html((d) => d.name);
+    filesContainer.select('dt > small').text((d) => `${d.lines.length} lines`);
+
+    filesContainer
+    .select('dd')
+    .selectAll('div')
+    .data((d) => d.lines)
+    .join('div')
+    .attr('class', 'loc');
 }
 
 renderCommitInfo(data, commits);
